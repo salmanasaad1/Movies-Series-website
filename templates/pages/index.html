@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div>
+{% for z in lastm %}
+<section class="home container" id="home">
+    <img src="{{z.poster2.url}}" class="home-img">
+    <div class="home-text">
+        <h1 class="home-title">{{z.name}}<br></h1>
+        
+        <a href="{% url 'movie_detail' z.id %}" class="watch-btn">
+            <i class='bx bx-right-arrow'></i>
+            <span>Watch the Movie now</span>
+        </a>
+    </div>
+</section>{% endfor %}
+
+
+<!--web site recomandations-->
+
+<section class="popular container" id="popular">
+    <div class="heading">
+        <h2 class="heading-title">Site Advices</h2>
+        <!--Swiper Buttons-->
+        <div class="swiper-btn">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <div class="popular-content swiper">
+        <div class="swiper-wrapper">
+            <!--Movies Box 1-->{% for x in site %}
+            <div class="swiper-slide">
+                <div class="movie-box">
+                    <img src="{{x.movie.poster.url}}" class="movie-box-img">
+                    <div class="box-text">
+                        <h2 class="movie-title">{{x.movie.name}}</h2>
+                        <span class="movie-type">{% for c in x.movie.category.all %}{{c.cate}}  {% endfor %}</span>
+                        <a href="{% url 'movie_detail' x.movie.id %}" class="watch-btn play-btn">
+                            <i class='bx bx-right-arrow'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>{% endfor %}
+
+            
+        </div>
+    </div>
+</section>
+<!--end of web site recomandations-->
+<!--Movies Section Start-->
+<section class="movies container" id="movies">
+    <div class="heading">
+        <h2 class="heading-title">Movies</h2>
+    </div>
+    <!--Movies Content-->
+    <div class="movies-content">
+        <!--Movies Box 1-->{% for x in movie %}
+        <div class="movie-box">
+            <img src="{{x.poster.url}}" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">{{x.name}}</h2>
+                
+                <span class="movie-type">{% for c in x.category.all %}{{c.cate}}  {% endfor %}</span>
+                <a href="{% url 'movie_detail' x.id %}" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>{% endfor %}
+
+    </div>
+    <div class="next-page">
+
+    <a href="{% url 'movies' %}" class="next-btn">More Movies</a>
+    
+</div>
+</section>
+
+<section class="movies container" id="shows">
+    <div class="heading">
+        <h2 class="heading-title">Shows</h2>
+    </div>
+    <!--Movies Content-->
+    <div class="movies-content">
+        <!--Movies Box 1-->{% for x in tv %}
+        <div class="movie-box">
+            <img src="{{x.poster.url}}" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">{{x.name}}</h2>
+                
+                <span class="movie-type">{% for c in x.category.all %}{{c.cate}}  {% endfor %}</span>
+                <a href="{% url 'tv' x.id %}" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>{% endfor %}
+
+    </div>
+     <div class="next-page">
+
+    <a href="{% url 'shows' %}" class="next-btn">More shows</a>
+    
+
+</section>
+<!--Popular Section End-->
+<!--Next Page-->
+
+
+
+{% endblock content %}

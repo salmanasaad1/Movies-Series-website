@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>MoviesVerse</title>
+    <link rel="stylesheet" href="{% static 'css/st.css'%}">
+    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css'%}">
+    <link rel="shortcut icon" href="{% static 'img/Moviesverse-Logo.png'%}" type="image/x-icon">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel='stylesheet'>
+    
+
+     <!-- Bootstrap CSS -->
+
+     <!-- Font awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+{% include 'parts/nav.html' %}
+{% include 'parts/sidebar.html' %}
+{% block content %}
+
+
+
+{% endblock content %}
+{% include 'parts/footer.html' %}
+  </div>
+  <script src="{% static 'js/swiper-bundle.min.js'%}"></script>
+    <script src="{% static 'js/main.js'%}"></script>
+    <script src="{% static 'js/m.js '%}"></script>
+
+  
+    <script type="text/javascript" src="{%static 'js/jquery.min.js'%}"></script>
+    
+	<script type="text/javascript" src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script type="text/javascript">
+        var $star_rating = $('.star-rating .fa');
+    
+        var SetRatingStar = function() {
+            return $star_rating.each(function() {
+            if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+              
+                return $(this).removeClass('fa-star-o').addClass('fa-star');
+            } else {
+            return $(this).removeClass('fa-star').addClass('fa-star-o');
+            }
+            });
+            };
+    
+        $star_rating.on('click', function() {
+        $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+        return SetRatingStar();
+        });
+    
+        SetRatingStar();
+        $(document).ready(function() {
+    
+        });
+    
+    </script>
+    <script type="text/javascript">
+        function validateForm(){
+        var x = document.forms["ratingForm"]["rating"].value;
+        if(x=="0"){
+            alert("Invalid Input");
+            return false;
+        }
+        }
+    </script>
+    
+    
+
+</body>
+
+</html>

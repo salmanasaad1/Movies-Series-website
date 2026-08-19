@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/stp.css   '%}">
+    <title>Profile Page</title>
+</head>
+<body>
+	{% block content %}
+
+	
+	{% endblock content %}
+
+
+</body>
+</html> 
+
+
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/stpr.css ' %}">
+    <title>profile page</title>
+</head>
+<body>
+    {% include 'parts/sidebar.html' %}
+
+    {% block content %}
+    
+    {% endblock content %}
+
+
+    <script>
+        function uploadFile() {
+         const fileInput = document.getElementById('file');
+         const file = fileInput.files[0];
+         console.log(file.name);
+        }
+    </script>
+</body>
+</html> {% endcomment %}

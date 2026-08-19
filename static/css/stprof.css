@@ -1,0 +1,78 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+body {
+    background: rgb(138, 33, 33);
+}
+
+.container {
+    background-color: rgb(122, 117, 117);
+    margin: 4rem;
+    border: 0.1rem solid black;
+    border-radius: 1rem ;
+    position: relative;
+    width: 80%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .profile-info{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container.img-profile{
+    position: relative;
+    border-radius: 5px;
+}
+.container .profile-info img {
+    width: 12rem;
+    height: 12rem;
+    border: 0.1rem black solid;
+    border-radius: 50%;
+}
+
+.container .profile-info .infos {
+    text-align: center;
+    margin: 2rem;
+}
+
+.container .update {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .update h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    display: block;
+
+}
+
+.container .update input {
+    border-radius: 0.5rem;
+}
+
+.container .update .input-side {
+    display: block;
+}
+
+.container .update .btn {
+    display: block;
+    margin-top: 2rem;
+    border: 0.01rem black solid;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    background-color: rgb(18, 207, 18);
+    color: black;
+    cursor: pointer;
+}

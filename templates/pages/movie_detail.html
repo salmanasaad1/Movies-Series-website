@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <div class="alert alert-success">
+              <strong>Success!</strong> {{message}}
+            </div>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% for i in movies %}
+<div class="play-container container">
+    <!--Play Image-->
+    <img src="{{i.poster2.url}}" alt="" class="play-img">
+    <!--Play Text-->
+    <div class="play-text">
+        
+        <h2>{{i.name}}</h2>
+        <!--Ratings-->
+        <div class="rating">
+            <form class="form-horizontal" role="search" method="post" action="{% url 'movie_detail' i.id %}" onsubmit="return validateForm()"  name="ratingForm">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="row">
+                            <div class="col-lg-14">
+                                <div class="star-rating">
+                                    <span>Rate Movie</span>
+                                    <span class="fa fa-star-o" data-rating="1"></span>
+                                    <span class="fa fa-star-o" data-rating="2"></span>
+                                    <span class="fa fa-star-o" data-rating="3"></span>
+                                    <span class="fa fa-star-o" data-rating="4"></span>
+                                    <span class="fa fa-star-o" data-rating="5"></span>
+                                    
+                                    
+                                        <input type="hidden" name="rating" class="rating-value" value="{% for x in rat %}{{x.rating}}{% endfor %}" >
+                                    
+                                    {% csrf_token %}
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="rating-button" value="Submit">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <!--Tags-->
+        <div class="tags">{% for c in i.category.all %}
+            
+            <a href="{% url 'category_movie' c.id%}"><span>{{c.cate}}</span></a>
+            {% endfor %}
+        </div>
+        <!--Trailer Button-->
+        
+        <a class="watch-btn">
+            
+            <i class='bx bx-right-arrow play-movie-t'></i>
+            <span>Watch the trailer</span>
+            
+        </a>
+        <div class="video-containert">
+            <!--Video-Box-->
+            <div class="video-box">
+                <video id="myvideot" src="{{i.trailer.url}}" controls></video>
+                <!--Colse Video Icon-->
+                <i class='bx bx-x close-video-t'></i>
+                
+            </div>
+        </div> 
+    </div>  
+    <!--Play Btn-->
+    <i class='bx bx-right-arrow play-movie'></i>
+    <!--Video Container-->
+    <div class="video-container">
+        <!--Video-Box-->
+        <div class="video-box">
+            <video id="myvideo" src="{{i.movie.url}}" controls></video>
+            <!--Colse Video Icon-->
+            <i class='bx bx-x close-video'></i>
+        </div>
+    </div>
+</div>
+<!--About-->
+<div class="about-movie container">
+    <form class="form-horizontal" role="search" method="post" >
+        {% csrf_token %}
+        <div>
+         <span class="favo">Add to my list </span>
+            {% if update %}
+            <input type="checkbox" name='watch' checked>
+            <input type="submit" class="heart-button" value="Remove" name='watch'>
+            {% else %}
+            <input type="checkbox" name='watch'>
+            <input type="submit" class="heart-button" value="Add" >
+            {% endif %}
+        </div>
+    </form>
+    <h2>{{i.name}}</h2>
+    <p>{{i.about}}</p>
+    <!--Movie Cast-->
+    
+    
+    <h2 class="cast-heading">Movie Cast</h2>
+    <div class="cast">
+        {% for x in i.actors.all %}
+        <div  class="cast-box" >
+           <a href="{% url 'actor_movies' x.id%}" ><img src="{{x.actors_photo.url}}" alt="" class="cast-img"> </a>
+            <span class="cast-title">{{x.actor_name}}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!--Download-->
+
+<div class="download">
+    <h2 class="download-title">Download Movie</h2>
+    <div class="download-links">
+        
+        <a href="{{i.movie.url}}" download>480p</a>
+        <a href="{{i.movie.url}}" download>720p</a>
+        <a href="{{i.movie.url}}" download>1080p</a>
+        
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}

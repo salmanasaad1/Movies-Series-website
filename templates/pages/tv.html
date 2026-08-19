@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% for i in tv %}
+<div class="play-container container">
+    <!--Play Image-->
+    <img src="{{i.poster2.url}}" alt="" class="play-img">
+    <!--Play Text-->
+    <div class="play-text">
+        
+        <h2>{{i.name}}</h2>
+        <!--Ratings-->
+        <div class="rating">
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star-half'></i>
+        </div>
+        <!--Tags-->
+        <div class="tags">{% for c in i.category.all %}
+            
+            <a href="{% url 'category_movie' c.id%}"><span>{{c.cate}}</span></a>
+            {% endfor %}
+        </div>
+        <!--Trailer Button-->
+        <a href="#" class="watch-btn">
+            <i class='bx bx-right-arrow '></i>
+            <span>Watch the trailer</span>
+        </a>
+    </div>
+    <!--Play Btn-->
+</div>
+<!--About-->
+<div class="about-movie container">
+    <form class="form-horizontal" role="search" method="post" >
+        {% csrf_token %}
+        <div>
+         <span class="favo">Add to my list </span>
+            {% if update %}
+            <input type="checkbox" name='watch' checked>
+            <input type="submit" class="heart-button" value="Remove" name='watch'>
+            {% else %}
+            <input type="checkbox" name='watch'>
+            <input type="submit" class="heart-button" value="Add" >
+            {% endif %}
+        </div>
+    </form>
+    <h2>{{i.name}}</h2>
+    <p>{{i.about}}</p>
+    <!--Movie Cast-->
+    
+    
+    <h2 class="cast-heading">Movie Cast</h2>
+    <div class="cast">
+        {% for x in i.actors.all %}
+        <div  class="cast-box" >
+           <a href="{% url 'actor_movies' x.id%}" ><img src="{{x.actors_photo.url}}" alt="" class="cast-img"> </a>
+            <span class="cast-title">{{x.actor_name}}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!--Download-->
+
+<div class="download">
+    <h2 class="download-title">Choose Season</h2>
+</div>
+
+
+<div class="about-movie-s container">
+<div class="cast-s">
+   {% for x in i.season.all %}
+    <div class="movie-box">
+        <img src="{{x.poster.url}}" class="movie-box-img">
+        <div class="box-text">
+            <h2 class="movie-title">{{x.part_name}}</h2>
+            
+            <a href="{% url 'season' x.id %}" class="watch-btn play-btn">
+                <i class='bx bx-right-arrow'></i>
+            </a>
+        </div>
+    </div>{% endfor %}
+</div>
+{% endfor %}
+{% endblock content %}

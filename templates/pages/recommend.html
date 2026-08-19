@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="movies container" id="movies">
+    <div class="heading">
+        <h2 class="heading-title">Recomanded Movies</h2>
+    </div>
+    <!--Movies Content-->
+    <div class="movies-content">
+        <!--Movies Box 1-->{% for x in movie_list %}
+        <div class="movie-box1">
+            <img src="{{x.poster.url}}" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">{{x.name}}</h2>
+                <span class="movie-type">{% for c in x.category.all %}{{c.cate }} {% endfor %}</span>
+                <a href="{% url 'movie_detail' x.id %}" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>{% endfor %}
+
+    </div>
+</section>
+{% endblock content %}

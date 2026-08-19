@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if posts %}
+
+
+<section class="movies container" id="movies">
+    
+    <!--Movies Content-->
+    <div class="movies-content">{% for i in posts %}
+        <!--Movies Box 1-->
+        <div class="movie-box">
+            <img src="{{i.poster.url}}" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">{{i.name}}</h2>
+                <span class="movie-type">{% for c in i.category.all %}{{c.cate }} {% endfor %}</span>
+                <a href="{% url 'movie_detail' i.id %}" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>{% endfor %}
+
+        {% for i in tv %}
+        <!--Movies Box 1-->
+        <div class="movie-box">
+            <img src="{{i.poster.url}}" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">{{i.name}}</h2>
+                <span class="movie-type">{% for c in i.category.all %}{{c.cate }} {% endfor %}</span>
+                <a href="{% url 'tv' i.id %}" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>{% endfor %}
+
+       
+
+    </div>
+</section>
+
+
+{% else %}
+<h1 class="nothing">we couldnt find any result</h1>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% load static %}
+<header>
+
+    <div class="navbar">
+        <a href="{% url 'index' %}" class="nav-link nav-active">
+            <i class='bx bx-home'></i>
+            <span class="nav-link-title">Home</span>
+        </a>
+        
+        <a href="{% url 'recommend' %}"  class="nav-link">
+            <i class='bx bxs-hot'></i>
+           <span class="nav-link-title">Advice</span>
+        </a>
+        <a href="{% url 'shows' %}" class="nav-link">
+            <i class='bx bx-compass'></i>
+            <span class="nav-link-title">Shows</span>
+        </a>
+        <a href="{% url 'movies' %}" class="nav-link">
+            <i class='bx bx-tv'></i>
+            <span class="nav-link-title">Movies</span>
+        </a>
+        <a href="{% url 'favorite' %}" class="nav-link">
+            <i class='bx bx-heart'></i>
+            <span class="nav-link-title">Favourite</span>
+        </a>
+    </div>
+</div>
+</header>

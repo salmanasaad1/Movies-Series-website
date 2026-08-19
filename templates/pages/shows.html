@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="movies container" id="movies">
+    <div class="heading">
+        <h2 class="heading-title">Discover your Shows</h2>
+    </div>
+    <!--Movies Content-->
+    <div class="movies-content">
+        <!--Movies Box 1-->{% for x in tv %}
+        <div class="movie-box1">
+            <img src="{{x.poster.url}}" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">{{x.name}}</h2>
+                <span class="movie-type">{% for c in x.category.all %}{{c.cate }} {% endfor %}</span>
+                <a href="{% url 'tv' x.id %}" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>{% endfor %}
+
+    </div>
+</section>
+
+{% if tv.has_other_pages %}
+<div class="next-page">
+    {% if tv.has_previous %}
+    <a href="?page={{tv.previous_page_number}}#movies" class="next-btn previos">previos Page</a>
+    {% endif %}
+
+    {% if tv.has_next %}
+    <a href="?page={{tv.next_page_number}}#movies" class="next-btn">Next Page</a>
+    {% endif %}
+
+</div>
+{% endif %}
+{% endblock content %}

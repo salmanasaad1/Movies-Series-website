@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="movies container" id="movies">
+    {% for x in cat %}
+    <div class="heading">
+        <h2 class="heading-title">{{x.cate}}</h2>
+    </div>{% endfor %}
+    <!--Movies Content-->
+    <div class="movies-content2">
+        <!--Movies Box 1-->{% for x in movi %}
+        <div class="movie-box">
+            <img src="{{x.poster.url}}" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">{{x.name}}</h2>
+                <span class="movie-type">{% for c in x.category.all %}{{c.cate}}  {% endfor %}</span>
+                <a href="{% url 'movie_detail' x.id %}" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>{% endfor %}
+
+        {% for x in tv %}
+        <div class="movie-box">
+            <img src="{{x.poster.url}}" class="movie-box-img">
+            <div class="box-text">
+                <h2 class="movie-title">{{x.name}}</h2>
+                <span class="movie-type">{% for c in x.category.all %}{{c.cate}}  {% endfor %}</span>
+                <a href="{% url 'tv' x.id %}" class="watch-btn play-btn">
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+            </div>
+        </div>{% endfor %}
+
+    </div>
+    
+</section> 
+
+{% endblock content %}

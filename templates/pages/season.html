@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% for i in season %}
+<div class="play-container container">
+    
+    <!--About-->
+    <div class="about-movie container">
+        <h2>{{i.part_name}}</h2>
+        <!--Movie Cast-->
+        
+        <div class="cast-s-e">
+            {% for x in i.episodes.all %}
+            <div class="movie-box">
+                <img src="{{x.episode_poster.url}}" class="movie-box-img">
+                <div class="box-text">
+                    <h2 class="movie-title">{{x.episode_name}}</h2>
+                    
+                    <a href="{% url 'episode' x.id %}" class="watch-btn play-btn">
+                        <i class='bx bx-right-arrow'></i>
+                    </a>
+                </div>
+            </div>{% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock content %}

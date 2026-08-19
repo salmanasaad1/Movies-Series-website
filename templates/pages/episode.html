@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% for i in episode %}
+<div class="play-container-e container">
+
+    <h2 class="download-title">{{i.episode_name}}</h2>
+    <!--Play Image-->
+    <img src="{{i.episode_poster2.url}}" alt="" class="play-img">
+    <!--Play Text-->
+    
+    <!--Play Btn-->
+    
+    <i class='bx bx-right-arrow play-movie-e'></i>
+    <!--Video Container-->
+    <div class="video-container-e">
+        <!--Video-Box-->
+        <div class="video-box">
+            <video id="myvideoe" src="{{i.episode.url}}" controls></video>
+            <!--Colse Video Icon-->
+            <i class='bx bx-x close-video-e'></i>
+        </div>
+    </div>
+</div>
+<!--About-->
+<div class="about-movie container">
+    
+   
+    
+</div>
+<!--Download-->
+<div class="download-e">
+    <h2 class="download-title-e">Download </h2>
+    <div class="download-links">
+        <a href="{{i.episode.url}}" download>480p</a>
+        <a href="{{i.episode.url}}" download>720p</a>
+        <a href="{{i.episode.url}}" download>1080p</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock content%}
