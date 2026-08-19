@@ -91,3 +91,33 @@ python manage.py runserver
 Open your browser and visit:
 
 http://127.0.0.1:8000/
+
+
+🎯 Project Goals
+
+The main goal of this project is to build a complete movie and TV show platform while practicing full-stack web development with Django.
+
+It also serves as a practical project for improving skills in:
+
+Frontend development
+Backend development
+Django
+Database management
+RESTful concepts
+Responsive web design
+Git & GitHub
+🔮 Future Improvements
+ User authentication
+ User profiles
+ Favorites / Watchlist
+ Ratings and reviews
+ Advanced search and filtering
+ Pagination
+ Improved recommendation system
+ Online deployment
+ API integration
+👨‍💻 Author
+Salman Saad
+
+GitHub:
+https://github.com/salmanasaad1
